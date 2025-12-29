@@ -1,19 +1,10 @@
-server:
-  port: 8080
-
 spring:
-  application:
-    name: apigateway
-
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-
       routes:
         - id: project-service
-          uri: lb://PROJECT-SERVICE
+          uri: lb://project-service
           predicates:
             - Path=/projects/**
+          filters:
+            - StripPrefix=1
