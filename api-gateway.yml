@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: project-service
+          uri: lb://project-service
+          predicates:
+            - Path=/projects/**
