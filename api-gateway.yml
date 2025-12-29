@@ -14,6 +14,6 @@ spring:
 
       routes:
         - id: project-service
-          uri: lb://PROJECT-SERVICE
+          uri: lb://project-service
           predicates:
             - Path=/projects/**
