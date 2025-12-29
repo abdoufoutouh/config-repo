@@ -8,3 +8,9 @@ spring:
             - Path=/projects/**
           filters:
             - StripPrefix=1
+        - id: task-service
+          uri: lb://task-service
+          predicates:
+            - Path=/tasks/**
+          filters:
+            - StripPrefix=1
