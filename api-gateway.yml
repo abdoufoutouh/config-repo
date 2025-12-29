@@ -1,22 +1,19 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: apigateway
+    name: api-gateway
 
   cloud:
     gateway:
-      routes:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
 
+      routes:
         - id: project-service
           uri: lb://PROJECT-SERVICE
           predicates:
-            - Path=/api/projects/**
-
-        - id: task-service
-          uri: lb://TASK-SERVICE
-          predicates:
-            - Path=/api/tasks/**
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+            - Path=/projects/**
