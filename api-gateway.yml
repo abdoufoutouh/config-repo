@@ -1,7 +1,7 @@
 server:
   port: 8080
 
-
+spring:
   cloud:
     gateway:
       routes:
@@ -9,3 +9,9 @@ server:
           uri: lb://PROJECT-SERVICE
           predicates:
             - Path=/projects/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway,health,info
